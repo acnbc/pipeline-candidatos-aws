@@ -1,0 +1,50 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ListarPrefixosDoPipeline",
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket",
+        "s3:GetBucketLocation"
+      ],
+      "Resource": "arn:aws:s3:::candidatos-rj-296760889312",
+      "Condition": {
+        "StringLike": {
+          "s3:prefix": [
+            "bronze",
+            "bronze/*",
+            "silver",
+            "silver/*",
+            "gold",
+            "gold/*"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "LerBronze",
+      "Effect": "Allow",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::candidatos-rj-296760889312/bronze/*"
+    },
+    {
+      "Sid": "ReenviarBronze",
+      "Effect": "Allow",
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::candidatos-rj-296760889312/bronze/*"
+    },
+    {
+      "Sid": "LerEGravarSilverGold",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::candidatos-rj-296760889312/silver/*",
+        "arn:aws:s3:::candidatos-rj-296760889312/gold/*"
+      ]
+    }
+  ]
+}
