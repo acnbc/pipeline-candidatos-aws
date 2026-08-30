@@ -10,6 +10,7 @@ wheels/
 .pytest_cache/
 .env
 .aws-credentials-local
+.DS_Store
 
 # Virtual environments
 .venv
