@@ -61,7 +61,7 @@ def gravar_tabelas(tabelas: dict[str, pd.DataFrame], prefixo: str) -> None:
         os.close(fd)
         local = Path(caminho)
         tabela.to_csv(local, index=False)
-        enviar_csv(local, f"{prefixo}/{nome}.csv")
+        enviar_csv(local, f"{prefixo}/{nome}/{nome}.csv")
         local.unlink(missing_ok=True)
 
 def imprimir_resumo(
