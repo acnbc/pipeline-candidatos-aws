@@ -15,14 +15,14 @@ def _bucket() -> str:
 
 def cliente_s3():
     """Cliente s3 usando o perfil do .env"""
-    perfil = os.getenv("AWS_PROFILE")
-    if not perfil:
-        raise ValueError("Defina AWS_PROFILE no .env.")
     regiao = os.getenv("AWS_REGION", "us-east-1")
     if not regiao:
         raise ValueError("Defina AWS_REGION no .env.")
-    session = boto3.Session(profile_name=perfil, region_name=regiao)
-    return session.client("s3")
+    perfil = os.getenv("AWS_PROFILE")
+    if perfil:
+        session = boto3.Session(profile_name=perfil, region_name=regiao)
+        return session.client("s3")
+    return boto3.client("s3", region_name=regiao)
 
 def baixar_csv(chave: str) -> Path:
     """Baixa s3://bucket/chave para um CSV temprário e devolve o Path"""

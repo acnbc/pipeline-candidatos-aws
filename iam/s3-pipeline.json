@@ -17,7 +17,9 @@
             "silver",
             "silver/*",
             "gold",
-            "gold/*"
+            "gold/*",
+            "jobs",
+            "jobs/*"
           ]
         }
       }
@@ -45,6 +47,15 @@
         "arn:aws:s3:::candidatos-rj-296760889312/silver/*",
         "arn:aws:s3:::candidatos-rj-296760889312/gold/*"
       ]
-    }
+    },
+    {
+      "Sid": "ScriptsDoGlue",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject"
+      ],
+      "Resource": "arn:aws:s3:::candidatos-rj-296760889312/jobs/*"
+}
   ]
 }

@@ -2,6 +2,8 @@ import pandas as pd
 
 import re
 
+from typing import Optional
+
 EMAIL = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 
 def parse_real_br(serie: pd.Series) -> pd.Series:
@@ -62,7 +64,7 @@ def classificar_plataforma(url) -> str:
         return "email"
     return "outro"
 
-def faixa_etaria(idade) -> str | None:
+def faixa_etaria(idade) -> Optional[str]:
     """Agrupa uma idade em faixas de 10 anos"""
     if pd.isna(idade):
         return None
