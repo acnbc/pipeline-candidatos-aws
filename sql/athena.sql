@@ -12,7 +12,7 @@ WITH SERDEPROPERTIES (
   'quoteChar'     = '"'
 )
 STORED AS TEXTFILE
-LOCATION 's3://SEU_BUCKET/gold/competitividade/'
+LOCATION 's3://BUCKET/gold/competitividade/'
 TBLPROPERTIES ('skip.header.line.count' = '1');
 
 CREATE EXTERNAL TABLE candidatos_rj.representatividade_cargo (
@@ -36,7 +36,7 @@ WITH SERDEPROPERTIES (
   'quoteChar'     = '"'
 )
 STORED AS TEXTFILE
-LOCATION 's3://SEU_BUCKET/gold/representatividade_cargo/'
+LOCATION 's3://BUCKET/gold/representatividade_cargo/'
 TBLPROPERTIES ('skip.header.line.count' = '1');
 
 CREATE EXTERNAL TABLE candidatos_rj.patrimonio_genero (
@@ -52,7 +52,7 @@ WITH SERDEPROPERTIES (
   'quoteChar'     = '"'
 )
 STORED AS TEXTFILE
-LOCATION 's3://SEU_BUCKET/gold/patrimonio_genero/'
+LOCATION 's3://BUCKET/gold/patrimonio_genero/'
 TBLPROPERTIES ('skip.header.line.count' = '1');
 
 SELECT cargo,
